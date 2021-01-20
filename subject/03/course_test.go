@@ -1,4 +1,4 @@
-package _3
+package _03
 
 import (
 	"fmt"
@@ -13,6 +13,7 @@ func Test_lengthOfLongestSubstring(t *testing.T) {
 		"",
 	}
 	for _, value := range testStr {
-		fmt.Println(lengthOfLongestSubstring(value))
+		fmt.Println(lengthOfLongestSubstring1(value))
+		fmt.Println(lengthOfLongestSubstring2(value))
 	}
 }
