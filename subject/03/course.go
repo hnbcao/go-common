@@ -1,31 +1,21 @@
 package _03
 
-import (
-	"math"
-	"strings"
-)
-
-// 效率慢
+// 效率kuai
 func lengthOfLongestSubstring1(s string) int {
-	max := 0
-	length := len(s)
-	for prev := 0; prev < length; prev++ {
-		if length-prev < max {
-			return max
+	var arr [128]int
+	ret := 0
+	lasted := 0
+	for index, value := range s {
+		if arr[value] > lasted {
+			lasted = arr[value]
 		}
-		str := ""
-		for next := prev; next < length; next++ {
-			if strings.Contains(str, string(s[next])) {
-				break
-			} else {
-				str = str + string(s[next])
-				max = int(math.Max(float64(max), float64(next-prev+1)))
-				//fmt.Println(str)
-			}
+		arr[value] = index + 1
 
+		if index+1-lasted > ret {
+			ret = index + 1 - lasted
 		}
 	}
-	return max
+	return ret
 }
 
 // 效率快
